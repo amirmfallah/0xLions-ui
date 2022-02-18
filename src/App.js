@@ -49,7 +49,7 @@ class App extends React.Component {
                 <FontAwesomeIcon icon={faDiscord} ></FontAwesomeIcon>
               </div>
               <div className='social-btn'>
-                <img src='assets/opensea.svg' height="16px"></img>
+                <img src='assets/opensea.svg' alt='opensea' height="16px"></img>
               </div>
               <div className='social-btn'>
                 <FontAwesomeIcon icon={faEthereum} ></FontAwesomeIcon>
