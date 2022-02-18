@@ -14,7 +14,6 @@ const providerOptions = {
 const contractABI = require('./GameItem.json')
 const NFT_ABI = contractABI.abi
 const NFT_CONTRACT_ADDRESS = "0x5E2dEe3fF7e7368C60c6cf21306635D80B3742Ae"
-var web3;
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,11 +22,6 @@ class App extends React.Component {
     this.dec = this.dec.bind(this);
     this.connectWallet = this.connectWallet.bind(this);
     this.mint = this.mint.bind(this);
-    Swal.fire({title: 'Oops!',
-        text: 'Something went wrong. Please try again later.',
-        icon:'error',
-        heightAuto: false
-      })
   }
 
   web3Modal = new Web3Modal({
