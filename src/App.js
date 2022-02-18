@@ -17,11 +17,13 @@ const NFT_CONTRACT_ADDRESS = "0x5E2dEe3fF7e7368C60c6cf21306635D80B3742Ae"
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0, wallet: undefined, minting: false, web3: undefined};
+    this.state = {count: 0, wallet: undefined, minting: false, web3: undefined, supply: 0};
     this.inc = this.inc.bind(this);
     this.dec = this.dec.bind(this);
     this.connectWallet = this.connectWallet.bind(this);
     this.mint = this.mint.bind(this);
+    this.loadCount = this.loadCount.bind(this);
+    this.loadCount();
   }
 
   web3Modal = new Web3Modal({
@@ -44,6 +46,14 @@ class App extends React.Component {
     if (this.state.count > 0) {
       this.setState({count: this.state.count-1});
     }
+  }
+
+  async loadCount() {
+    const web3 = new Web3("https://rpc-mumbai.maticvigil.com");
+    const contract = await new web3.eth.Contract(NFT_ABI,NFT_CONTRACT_ADDRESS);
+    contract.methods.totalSupply().call().then((count) => {
+      this.setState({supply: count});
+    })
   }
 
   async connectWallet() {
@@ -85,7 +95,7 @@ class App extends React.Component {
             <div className='para mb-3'>
               <p className='box'>An expansion collection of 10,000 regenerated unique Doodles with the Yellow Army spice!<br></br>Mint 0xDoodlesV3 between 10,000-19,999.<br></br>Our contract uses ERC721A standard, which makes minting very optimized! Gas fee for 1 mint and 5 mints are the same!</p>
             </div>
-            <span className='count'>0/10000</span>
+            <span className='count'>{this.state.supply}/10000</span>
             <div className='d-flex flex-row align-items-center mt-2'>
               <div className='counter d-flex flex-row align-items-center'>
                 <FontAwesomeIcon icon={faPlus} className="icon-btn"  onClick={this.inc}/>
