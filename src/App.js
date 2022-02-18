@@ -17,7 +17,7 @@ const NFT_CONTRACT_ADDRESS = "0x5E2dEe3fF7e7368C60c6cf21306635D80B3742Ae"
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0, wallet: undefined, minting: false};
+    this.state = {count: 0, wallet: undefined, minting: false, web3: undefined};
     this.inc = this.inc.bind(this);
     this.dec = this.dec.bind(this);
     this.connectWallet = this.connectWallet.bind(this);
@@ -29,7 +29,7 @@ class App extends React.Component {
     cacheProvider: true, // optional
     providerOptions // required
   });
-  web3;
+
   inc() {
     if(this.state.minting) {
       return;
@@ -48,8 +48,8 @@ class App extends React.Component {
 
   async connectWallet() {
     const provider = await this.web3Modal.connect();
-    this.web3 = new Web3(provider);
-    this.setState({wallet: (await this.web3.eth.getAccounts())[0]})
+    this.setState({web3: new Web3(provider)})
+    this.setState({wallet: (await this.state.web3.eth.getAccounts())[0]})
     console.log(this.state.wallet)
   }
 
@@ -57,7 +57,7 @@ class App extends React.Component {
     if(this.state.minting) {
       return;
     }
-    const contract = await new this.web3.eth.Contract(NFT_ABI,NFT_CONTRACT_ADDRESS);
+    const contract = await new this.state.web3.eth.Contract(NFT_ABI,NFT_CONTRACT_ADDRESS);
     this.setState({minting: true});
     contract.methods.mintItem(this.state.wallet, `https://ipfs.io/ipfs/QmdnbSaYXWot4yokGKPhZYr2vK7veUf2inmqTBPa2L3pQ1`)
       .send({ from: this.state.wallet }).then(async () => {
