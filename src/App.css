@@ -45,6 +45,15 @@
   transition: 0.3s;
 }
 
+.mint-btn:disabled {
+  background-color: rgb(134, 134, 134);
+}
+
+.mint-btn:disabled:hover {
+  background-color: rgb(134, 134, 134);
+  color: #ffffff;
+}
+
 .para {
   width: 70%;
   max-width: 70%;
@@ -108,4 +117,8 @@ span {
 .count {
   font-size: 36px;
   font-weight: bold;
+}
+
+body.swal2-height-auto {
+  height: 100% !important
 }

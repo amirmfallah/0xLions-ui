@@ -2,6 +2,7 @@ import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faDiscord, faEthereum} from '@fortawesome/free-brands-svg-icons'
+import * as Swal from 'sweetalert2';
 import React from 'react';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
@@ -17,12 +18,16 @@ var web3;
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {count: 0, wallet: undefined};
+    this.state = {count: 0, wallet: undefined, minting: false};
     this.inc = this.inc.bind(this);
     this.dec = this.dec.bind(this);
     this.connectWallet = this.connectWallet.bind(this);
     this.mint = this.mint.bind(this);
-
+    Swal.fire({title: 'Oops!',
+        text: 'Something went wrong. Please try again later.',
+        icon:'error',
+        heightAuto: false
+      })
   }
 
   web3Modal = new Web3Modal({
@@ -32,10 +37,16 @@ class App extends React.Component {
   });
   web3;
   inc() {
+    if(this.state.minting) {
+      return;
+    }
     this.setState({count: this.state.count+1});
   }
 
   dec() {
+    if(this.state.minting) {
+      return;
+    }
     if (this.state.count > 0) {
       this.setState({count: this.state.count-1});
     }
@@ -49,9 +60,27 @@ class App extends React.Component {
   }
 
   async mint() {
+    if(this.state.minting) {
+      return;
+    }
     const contract = await new this.web3.eth.Contract(NFT_ABI,NFT_CONTRACT_ADDRESS);
+    this.setState({minting: true});
     contract.methods.mintItem(this.state.wallet, `https://ipfs.io/ipfs/QmdnbSaYXWot4yokGKPhZYr2vK7veUf2inmqTBPa2L3pQ1`)
-      .send({ from: this.state.wallet }).then(console.log('minted')).catch(error => console.log(error));
+      .send({ from: this.state.wallet }).then(async () => {
+        await Swal.fire({title: 'Congratulations!',
+        text: 'You just minted a 0xDoodlesNFT V3. Welcome to the family.',
+        icon:'success',
+        heightAuto: false
+      })
+      this.setState({minting: false});
+      }).catch(async (error) => {
+        await Swal.fire({title: 'Oops!',
+        text: 'Something went wrong. Please try again later.',
+        icon:'error',
+        heightAuto: false
+      })
+      this.setState({minting: false});
+      });
   }
 
   render() {
@@ -69,8 +98,8 @@ class App extends React.Component {
                 <span>{this.state.count}</span>
                 <FontAwesomeIcon icon={faMinus} className="icon-btn"  onClick={this.dec}/>
               </div>
-              { !this.state.wallet && <button className='mint-btn' onClick={this.connectWallet}>Connect Wallet</button>}
-              { !!this.state.wallet && <button className='mint-btn' onClick={this.mint}>Mint</button>}
+              { !this.state.wallet && <button className='mint-btn' onClick={this.connectWallet} disabled={this.state.minting}>Connect Wallet</button>}
+              { !!this.state.wallet && <button className='mint-btn' onClick={this.mint} disabled={this.state.minting}>Mint</button>}
 
             </div>
 
