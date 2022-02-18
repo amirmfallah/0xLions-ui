@@ -6,9 +6,33 @@ import * as Swal from 'sweetalert2';
 import React from 'react';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import Torus from "@toruslabs/torus-embed";
 
 const providerOptions = {
   /* See Provider Options Section */
+  walletconnect: {
+    display: {
+      name: "Mobile"
+    },
+    package: WalletConnectProvider,
+    options: {
+      infuraId: "c6b542eeabaad77388f2f7a03a65922b" // required
+    }
+  },
+  torus: {
+    package: Torus, // required
+    options: {
+      networkParams: {
+        host: "https://localhost:8545", // optional
+        chainId: 1337, // optional
+        networkId: 1337 // optional
+      },
+      config: {
+        buildEnv: "development" // optional
+      }
+    }
+  }
 };
 
 const contractABI = require('./GameItem.json')
@@ -57,6 +81,8 @@ class App extends React.Component {
   }
 
   async connectWallet() {
+    const res = await this.web3Modal.toggleModal();
+    console.log(res);
     const provider = await this.web3Modal.connect();
     this.setState({web3: new Web3(provider)})
     this.setState({wallet: (await this.state.web3.eth.getAccounts())[0]})
