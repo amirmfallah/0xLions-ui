@@ -25,7 +25,7 @@ const providerOptions = {
 
 const contractABI = require("./XDoodlesNFTV3.json");
 const NFT_ABI = contractABI.abi;
-const NFT_CONTRACT_ADDRESS = "0x61009E14312Cf326e88D4eb7d21095Dde33ee15B";
+const NFT_CONTRACT_ADDRESS = "0x4a5829d925E3EaE4B53279A521b9026AFcBCB1f0";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -113,14 +113,6 @@ class App extends React.Component {
         "ether"
       ),
     };
-
-    // const signedTx = await this.state.web3.eth.signTransaction(
-    //   tx,
-    //   this.state.wallet
-    // );
-    // const transactionReceipt = await this.state.web3.eth.sendSignedTransaction(
-    //   signedTx.rawTransaction
-    // );
 
     contract.methods
       .mintItem(this.state.web3.utils.toBN(this.state.count))
