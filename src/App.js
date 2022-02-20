@@ -15,17 +15,16 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 const providerOptions = {
   /* See Provider Options Section */
   walletconnect: {
-    host: "https://rpc-mumbai.matic.today",
     package: WalletConnectProvider,
     options: {
       infuraId: "c6b542eeabaad77388f2f7a03a65922b", // required
+      network: "rinkeby",
     },
   },
 };
-
 const contractABI = require("./XDoodlesNFTV3.json");
 const NFT_ABI = contractABI.abi;
-const NFT_CONTRACT_ADDRESS = "0x4a5829d925E3EaE4B53279A521b9026AFcBCB1f0";
+const NFT_CONTRACT_ADDRESS = "0x10C4Ab979f558b217deDcbA0C1A8eaCEE40eCC80";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,16 +35,30 @@ class App extends React.Component {
       web3: undefined,
       supply: 0,
     };
+
     this.inc = this.inc.bind(this);
     this.dec = this.dec.bind(this);
     this.connectWallet = this.connectWallet.bind(this);
     this.mint = this.mint.bind(this);
     this.loadCount = this.loadCount.bind(this);
-    this.loadCount();
+    this.loadInstance = this.loadInstance.bind(this);
+
+    this.loadInstance();
+  }
+  web3Instance;
+  contractInstance;
+
+  async loadInstance() {
+    this.web3Instance = new Web3("https://rinkeby-light.eth.linkpool.io");
+    this.contractInstance = await new this.web3Instance.eth.Contract(
+      NFT_ABI,
+      NFT_CONTRACT_ADDRESS
+    );
+    setInterval(this.timer.bind(this), 5000);
   }
 
   web3Modal = new Web3Modal({
-    network: "mumbai", // optional
+    network: "rinkeby", // optional
     cacheProvider: false, // optional
     providerOptions, // required
   });
@@ -69,20 +82,28 @@ class App extends React.Component {
     }
   }
 
-  async loadCount() {
-    const web3 = new Web3("https://rinkeby-light.eth.linkpool.io");
-    const contract = await new web3.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS);
-    contract.methods
-      .totalSupply()
-      .call()
-      .then((count) => {
-        this.setState({ supply: count });
-      });
+  async timer() {
+    if (!this.state.minting) {
+      await this.loadCount();
+    }
+  }
+
+  async loadCount(web) {
+    try {
+      this.contractInstance.methods
+        .totalSupply()
+        .call()
+        .then((count) => {
+          this.setState({ supply: count });
+        });
+    } catch (e) {
+      await this.loadInstance();
+    }
   }
 
   async connectWallet() {
     const provider = await this.web3Modal.connect();
-    this.setState({ web3: new Web3(provider) });
+    this.web3Instance = this.setState({ web3: new Web3(provider) });
     this.setState({ wallet: (await this.state.web3.eth.getAccounts())[0] });
     console.log(this.state.wallet);
   }
@@ -102,6 +123,12 @@ class App extends React.Component {
       "latest"
     ); //get latest nonce
 
+    let free = 1;
+    console.log(parseInt(this.state.supply), parseInt(this.state.count));
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 10000) {
+      free = 0;
+    }
+    console.log(free);
     //the transaction
     const tx = {
       from: this.state.wallet,
@@ -109,7 +136,7 @@ class App extends React.Component {
       nonce: nonce,
       maxPriorityFeePerGas: 2999999987,
       value: this.state.web3.utils.toWei(
-        (0.01 * this.state.count).toString(),
+        (0.01 * this.state.count * free).toString(),
         "ether"
       ),
     };
@@ -190,9 +217,9 @@ class App extends React.Component {
             <a className="social-btn" href="https://twitter.com/0xDoodlesNFT_">
               <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </a>
-            <div className="social-btn">
+            <a className="social-btn" href="https://discord.gg/Qnd3hpMf">
               <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-            </div>
+            </a>
             <div className="social-btn">
               <img src="assets/opensea.svg" alt="opensea" height="16px"></img>
             </div>
