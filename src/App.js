@@ -24,7 +24,7 @@ const providerOptions = {
 };
 const contractABI = require("./XDoodlesNFTV3.json");
 const NFT_ABI = contractABI.abi;
-const NFT_CONTRACT_ADDRESS = "0x10C4Ab979f558b217deDcbA0C1A8eaCEE40eCC80";
+const NFT_CONTRACT_ADDRESS = "0x2bDabB1DBf6ADf80EecaEEaf25cBc979F37436A1";
 class App extends React.Component {
   constructor(props) {
     super(props);
