@@ -125,7 +125,7 @@ class App extends React.Component {
 
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 10000) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 2) {
       free = 0;
     }
     console.log(free);
