@@ -219,9 +219,9 @@ class App extends React.Component {
             <a className="social-btn" href="https://twitter.com/0xDoodlesNFT_">
               <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </a>
-            <a className="social-btn">
+            <div className="social-btn">
               <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-            </a>
+            </div>
             <div className="social-btn">
               <img src="assets/opensea.svg" alt="opensea" height="16px"></img>
             </div>
