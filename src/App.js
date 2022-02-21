@@ -18,13 +18,13 @@ const providerOptions = {
     package: WalletConnectProvider,
     options: {
       infuraId: "c6b542eeabaad77388f2f7a03a65922b", // required
-      network: "rinkeby",
+      network: "mainnet",
     },
   },
 };
 const contractABI = require("./XDoodlesNFTV3.json");
 const NFT_ABI = contractABI.abi;
-const NFT_CONTRACT_ADDRESS = "0xBb25cc38f1Fbb796411b8684913E73eB8D02bE2a";
+const NFT_CONTRACT_ADDRESS = "0xE65290Fc72Cd9445ecB98136324d9BE58337D57c";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +49,9 @@ class App extends React.Component {
   contractInstance;
 
   async loadInstance() {
-    this.web3Instance = new Web3("https://rinkeby-light.eth.linkpool.io");
+    this.web3Instance = new Web3(
+      "https://mainnet.infura.io/v3/eff0770e240c478bac80351b31dd5e97"
+    );
     this.contractInstance = await new this.web3Instance.eth.Contract(
       NFT_ABI,
       NFT_CONTRACT_ADDRESS
@@ -58,7 +60,7 @@ class App extends React.Component {
   }
 
   web3Modal = new Web3Modal({
-    network: "rinkeby", // optional
+    network: "mainnet", // optional
     cacheProvider: false, // optional
     providerOptions, // required
   });
@@ -125,7 +127,7 @@ class App extends React.Component {
 
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 2) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 1100) {
       free = 0;
     }
     console.log(free);
