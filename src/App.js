@@ -219,7 +219,7 @@ class App extends React.Component {
             <a className="social-btn" href="https://twitter.com/0xDoodlesNFT_">
               <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </a>
-            <a className="social-btn" href="https://discord.gg/Qnd3hpMf">
+            <a className="social-btn">
               <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
             </a>
             <div className="social-btn">
