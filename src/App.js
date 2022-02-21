@@ -225,9 +225,12 @@ class App extends React.Component {
             <div className="social-btn">
               <img src="assets/opensea.svg" alt="opensea" height="16px"></img>
             </div>
-            <div className="social-btn">
+            <a
+              className="social-btn"
+              href="https://etherscan.io/token/0xE65290Fc72Cd9445ecB98136324d9BE58337D57c"
+            >
               <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
-            </div>
+            </a>
           </div>
         </div>
       </div>
