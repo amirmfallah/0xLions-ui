@@ -176,7 +176,7 @@ class App extends React.Component {
               An expansion collection of 10,000 regenerated unique Doodles with
               the Yellow Army spice!<br></br>Mint 0xDoodlesV3 between
               10,000-19,999.<br></br>Our contract uses ERC721A standard, which
-              makes minting very optimized! Gas fee for 1 mint and 5 mints are
+              makes minting very optimized! Gas fee for 1 mint and 10 mints are
               the same!
             </p>
           </div>
