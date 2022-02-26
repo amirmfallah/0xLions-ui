@@ -5,10 +5,9 @@ export default function About() {
   return (
     <div className="about-section">
       <div className="about-banner d-flex flex-column justify-content-center">
-        <h2 className="about-title">About</h2>
+        <h2 className="about-title">The Team</h2>
       </div>
       <div className="container">
-        <h2 className="text-center mt-4">The Team</h2>
         <div className="row">
           <div className="col-12 col-md-4 col-lg-4 p-4 d-flex flex-column">
             <img
