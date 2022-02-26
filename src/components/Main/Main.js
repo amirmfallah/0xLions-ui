@@ -10,9 +10,9 @@ import "./Main.css";
 
 export default function Main() {
   return (
-    <div className="main-section container pt-3">
+    <div className="main-section container pt-3 pb-3">
       <div className="row">
-        <div className="col-12 col-md-6 col-lg-6">
+        <div className="col-12 col-md-6 col-lg-6 d-flex flex-column align-items-center">
           <h3 className="main-title">
             0xLions V1 is a Collection of 6000 Unique Regenerated Lions living
             on the Ethereum blockchain.
@@ -32,7 +32,7 @@ export default function Main() {
             experimenting this and have yet to derive a solution…. To be
             continued.
           </p>
-          <div className="d-flex flex-row align-items-center mt-5">
+          <div className="d-flex flex-row align-items-center mt-3 mb-3">
             <div className="round-btn">
               <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
             </div>
@@ -42,26 +42,29 @@ export default function Main() {
             <div className="round-btn">
               <img src="/assets/opensea.svg" alt="opensea" height="16px"></img>
             </div>
-            <div className="round-btn">
+            <div className="round-btn no-margin">
               <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
             </div>
           </div>
         </div>
-        <div className="col-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
+        <div className="col-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
           <img src="/assets/1.jpeg" alt="sneakpeak" className="w-100"></img>
-          <div className="d-flex flex-row justify-content-center align-items-center mt-3">
-            <div className="round-btn">
-              <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
-            </div>
-            <div className="h-100 count-container">1</div>
-            <div className="round-btn">
-              <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
-            </div>
-          </div>
-          <button className="btn2 mt-4">Buy</button>
           <span className="text-center mt-3">
             One 0xLions V1 NFT cost 0.02 ETH
           </span>
+          <h2 className="text-center mt-3">0/6000</h2>
+          <div className="d-flex flex-row justify-content-center align-items-center mt-2">
+            <div className="d-flex flex-row justify-content-center align-items-center count-container">
+              <div className="round-btn">
+                <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
+              </div>
+              <span className="count">1</span>
+              <div className="round-btn m-0">
+                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+              </div>
+            </div>
+            <button className="btn2">Mint</button>
+          </div>
         </div>
       </div>
     </div>

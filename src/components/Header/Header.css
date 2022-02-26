@@ -32,3 +32,12 @@
 .metamask {
   margin-right: 4px;
 }
+
+.menu-container {
+  position: relative;
+}
+
+.menu-items {
+  position: absolute;
+  color: #201f18;
+}

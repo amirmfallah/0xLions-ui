@@ -27,18 +27,23 @@ export default function Roadmap() {
         <ul className="mb-3">
           <li>
             A percent of the profits will go to marketing and pushing the
-            project and getting various influencers to join the project. We will
-            also be giving away 10 Ledger Nano S’s to lucky 0xLion holders! We
-            want all 0xLion holders to protect their assets. Stay safe in the
-            opensea!
+            project and getting various influencers to join the project.
+          </li>
+          <li>
+            We will also be giving away 10 Ledger Nano S’s to lucky 0xLion
+            holders! We want all 0xLion holders to protect their assets. Stay
+            safe in the opensea!
           </li>
         </ul>
         <h3>100% Sold</h3>
         <ul className="mb-3">
           <li>
             We will be giving away an original Lazy Lion to one of our lucky
-            0xLion holders! We will also give away a MacBook Pro, 2 Apple
-            Watches, and 3 pairs of AirPods to more of our lucky 0xLion holders!
+            0xLion holders!
+          </li>
+          <li>
+            We will also give away a MacBook Pro, 2 Apple Watches, and 3 pairs
+            of AirPods to more of our lucky 0xLion holders!
           </li>
         </ul>
       </div>

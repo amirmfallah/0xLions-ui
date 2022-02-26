@@ -124,3 +124,7 @@ body.swal2-height-auto {
 h2 {
   font-weight: bold !important;
 }
+
+.no-margin {
+  margin: 0 !important;
+}

@@ -15,7 +15,6 @@ export default function About() {
         ></img>
         <span>Connect Wallet</span>
       </div>
-      <span className="menu-btn pl-2">Menu</span>
     </div>
   );
 }
