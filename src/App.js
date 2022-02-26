@@ -11,6 +11,10 @@ import React from "react";
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import Main from "./components/Main/Main";
+import About from "./components/About/About";
+import Roadmap from "./components/Roadmap/Roadmap";
+import Header from "./components/Header/Header";
 
 const providerOptions = {
   /* See Provider Options Section */
@@ -43,7 +47,7 @@ class App extends React.Component {
     this.loadCount = this.loadCount.bind(this);
     this.loadInstance = this.loadInstance.bind(this);
 
-    this.loadInstance();
+    //this.loadInstance();
   }
   web3Instance;
   contractInstance;
@@ -168,71 +172,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="w-100 h-100 home-container">
-        <div className="d-flex flex-column align-items-center">
-          <h1 className="mb-3 title">0xDoodlesNFT V3</h1>
-          <div className="para mb-3">
-            <p className="box">
-              An expansion collection of 10,000 regenerated unique Doodles with
-              the Yellow Army spice!<br></br>Mint 0xDoodlesV3 between
-              10,000-19,999.<br></br>Our contract uses ERC721A standard, which
-              makes minting very optimized! Gas fee for 1 mint and 10 mints are
-              the same!
-            </p>
-          </div>
-          <span className="count">{this.state.supply}/10000</span>
-          <div className="d-flex flex-row align-items-center mt-2">
-            <div className="counter d-flex flex-row align-items-center">
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="icon-btn"
-                onClick={this.inc}
-              />
-              <span>{this.state.count}</span>
-              <FontAwesomeIcon
-                icon={faMinus}
-                className="icon-btn"
-                onClick={this.dec}
-              />
-            </div>
-            {!this.state.wallet && (
-              <button
-                className="mint-btn"
-                onClick={this.connectWallet}
-                disabled={this.state.minting}
-              >
-                Connect Wallet
-              </button>
-            )}
-            {!!this.state.wallet && (
-              <button
-                className="mint-btn"
-                onClick={this.mint}
-                disabled={this.state.minting}
-              >
-                Mint
-              </button>
-            )}
-          </div>
-
-          <div className="d-flex flex-row align-items-center mt-5">
-            <a className="social-btn" href="https://twitter.com/0xDoodlesNFT_">
-              <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-            </a>
-            <div className="social-btn">
-              <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-            </div>
-            <div className="social-btn">
-              <img src="assets/opensea.svg" alt="opensea" height="16px"></img>
-            </div>
-            <a
-              className="social-btn"
-              href="https://etherscan.io/token/0xE65290Fc72Cd9445ecB98136324d9BE58337D57c"
-            >
-              <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
-            </a>
-          </div>
-        </div>
+      <div>
+        <Header />
+        <Main />
+        <About />
+        <Roadmap />
       </div>
     );
   }

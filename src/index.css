@@ -1,20 +1,24 @@
 body {
   margin: 0;
-  font-family: 'Fredoka One';
+  font-family: "Poppins";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
 }
 
-html, body, #root, .home-container {
-  font-family: 'Fredoka One';
-  height:100%;
+html,
+body,
+#root,
+.home-container {
+  font-family: "Poppins";
+  height: 100%;
+  background-color: #fccd1b;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 body.swal2-height-auto {
-  height: 100% !important
+  height: 100% !important;
 }

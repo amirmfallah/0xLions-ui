@@ -1,0 +1,34 @@
+.connect-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fccd1b;
+  border-radius: 50px;
+  border: 2px solid #000;
+  background: #000;
+  height: 46px;
+  padding: 0 15px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.connect-btn:hover {
+  background: #fccd1b;
+  color: #000;
+}
+
+.menu-btn {
+  font-weight: bold;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.metamask {
+  margin-right: 4px;
+}
