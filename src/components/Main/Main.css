@@ -29,6 +29,18 @@
   margin-left: 8px;
 }
 
+.btn2:disabled {
+  background-color: rgb(44, 44, 44);
+  color: rgb(12, 12, 12);
+  border: none;
+}
+
+.btn2:disabled:hover {
+  background-color: rgb(44, 44, 44);
+  color: rgb(12, 12, 12);
+  border: none;
+}
+
 .btn2:hover {
   color: #000;
   background-color: #ffc61a;
