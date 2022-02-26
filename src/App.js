@@ -1,11 +1,5 @@
 import "./App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faDiscord,
-  faEthereum,
-} from "@fortawesome/free-brands-svg-icons";
+
 import * as Swal from "sweetalert2";
 import React from "react";
 import Web3 from "web3";
