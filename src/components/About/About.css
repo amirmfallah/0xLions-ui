@@ -1,0 +1,26 @@
+.about-section {
+  min-height: 100vh;
+}
+
+.about-banner {
+  height: 154px;
+  background: #000;
+  width: 100%;
+}
+
+.about-title {
+  font-weight: bold;
+  color: #ffc61a;
+  font-size: 48px;
+  text-align: center;
+}
+
+.team-name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.bio {
+  text-align: justify;
+  text-justify: inter-word;
+}

@@ -120,3 +120,7 @@ span {
 body.swal2-height-auto {
   height: 100% !important;
 }
+
+h2 {
+  font-weight: bold !important;
+}

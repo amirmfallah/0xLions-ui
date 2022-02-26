@@ -1,3 +1,8 @@
+import {
+  faDiscord,
+  faEthereum,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -13,20 +18,34 @@ export default function Main() {
             on the Ethereum blockchain.
           </h3>
           <p>
-            0xLazyLions is not affiliated with Lazy Lions or any other NFT
+            0xLions V1 is not affiliated with Lazy Lions or any other NFT
             projects.
           </p>
           <p>
             In a parallel universe, a DNA splicing disease has rapidly spread
-            across the 0xLazyLions private island. More than half of the
-            population has been infected by this DNA splicing disease. Due to
-            the extreme nature of this sickness, the 0xLazyLions have been
-            forced into quarantine. Those infected seem to be experiencing
-            extreme transformations drastically affecting their appearance.
-            Doctors and scientists across the island are intensely researching
-            and heavily experimenting this and have yet to derive a solution….
-            To be continued.
+            across the 0xLions private island. More than half of the population
+            has been infected by this DNA splicing disease. Due to the extreme
+            nature of this sickness, the 0xLions have been forced into
+            quarantine. Those infected seem to be experiencing extreme
+            transformations drastically affecting their appearance. Doctors and
+            scientists across the island are intensely researching and heavily
+            experimenting this and have yet to derive a solution…. To be
+            continued.
           </p>
+          <div className="d-flex flex-row align-items-center mt-5">
+            <div className="round-btn">
+              <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
+            </div>
+            <div className="round-btn">
+              <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
+            </div>
+            <div className="round-btn">
+              <img src="/assets/opensea.svg" alt="opensea" height="16px"></img>
+            </div>
+            <div className="round-btn">
+              <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
+            </div>
+          </div>
         </div>
         <div className="col-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
           <img src="/assets/1.jpeg" alt="sneakpeak" className="w-100"></img>
@@ -39,9 +58,9 @@ export default function Main() {
               <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
             </div>
           </div>
-          <button className="btn mt-4">Buy</button>
+          <button className="btn2 mt-4">Buy</button>
           <span className="text-center mt-3">
-            One 0xLazyLions NFT cost 0.02 ETH
+            One 0xLions V1 NFT cost 0.02 ETH
           </span>
         </div>
       </div>
