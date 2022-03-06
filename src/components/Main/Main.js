@@ -72,7 +72,7 @@ class Main extends React.Component {
     if (this.state.minting) {
       return;
     }
-    if (this.state.count >= 10) {
+    if (this.state.count >= 20) {
       return;
     }
     this.setState({ count: this.state.count + 1 });
@@ -134,7 +134,7 @@ class Main extends React.Component {
 
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 1100) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 1000) {
       free = 0;
     }
     console.log(free);
@@ -212,6 +212,10 @@ class Main extends React.Component {
               heavily experimenting this and have yet to derive a solution…. To
               be continued.
             </p>
+            <p className="bold">
+              Our contract uses ERC721A standard, which makes minting very
+              optimized! Gas fee for 1 mint and 20 mints are the same!
+            </p>
             <div className="d-flex flex-row align-items-center mt-3 mb-3">
               <a className="round-btn" href="https://twitter.com/0xLions_V1">
                 <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
@@ -249,6 +253,7 @@ class Main extends React.Component {
             <span className="text-center mt-3">
               One 0xLions V1 NFT cost 0.02 ETH
             </span>
+            <span className="text-center mt-1">First 1,000 Mints Free</span>
             <h2 className="text-center mt-3">{this.state.supply}/6000</h2>
             <div className="d-flex flex-row justify-content-center align-items-center mt-2">
               <div className="d-flex flex-row justify-content-center align-items-center count-container">
