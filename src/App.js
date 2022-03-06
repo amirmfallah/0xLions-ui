@@ -13,6 +13,11 @@ class App extends React.Component {
         <Main />
         <About />
         <Roadmap />
+        <p className="footer p-0">
+          0xLionsV1 website and smart contract developed by{" "}
+          <a href="https://twitter.com/Web3Amir">@Web3Amir</a>.
+        </p>
+        <p className="footer">© 0xLionsV1</p>
       </div>
     );
   }
