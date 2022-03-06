@@ -2,6 +2,7 @@ import {
   faDiscord,
   faEthereum,
   faTwitter,
+  faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -176,7 +177,7 @@ class Main extends React.Component {
     return (
       <div className="main-section container pt-3 pb-3">
         <div className="d-flex flex-row align-items-center mb-3">
-          <span className="header-title">0xLions V1</span>
+          <img src="/assets/banner.png" alt="logo" height={80}></img>
           <div className="flex-1 flex-grow-1"></div>
           <div className="connect-btn mr-2" onClick={this.connectWallet}>
             <img
@@ -212,12 +213,15 @@ class Main extends React.Component {
               be continued.
             </p>
             <div className="d-flex flex-row align-items-center mt-3 mb-3">
-              <div className="round-btn">
+              <a className="round-btn" href="https://twitter.com/0xLions_V1">
                 <FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon>
-              </div>
-              <div className="round-btn">
+              </a>
+              <a
+                className="round-btn"
+                href="https://discord.com/invite/FNVZZkyRvX"
+              >
                 <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
-              </div>
+              </a>
               <div className="round-btn">
                 <img
                   src="/assets/opensea.svg"
@@ -225,13 +229,23 @@ class Main extends React.Component {
                   height="16px"
                 ></img>
               </div>
-              <div className="round-btn no-margin">
+              <div className="round-btn">
                 <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
               </div>
+              <a
+                className="round-btn no-margin"
+                href="https://medium.com/@0xLions/0x-lions-v1-571242bb8967"
+              >
+                <FontAwesomeIcon icon={faMedium}></FontAwesomeIcon>
+              </a>
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-            <img src="/assets/1.jpeg" alt="sneakpeak" className="w-100"></img>
+            <img
+              src="/assets/sneak.gif"
+              alt="sneakpeak"
+              className="w-100"
+            ></img>
             <span className="text-center mt-3">
               One 0xLions V1 NFT cost 0.02 ETH
             </span>
@@ -247,7 +261,7 @@ class Main extends React.Component {
                 </div>
               </div>
               <button className="btn2" disabled={!this.state.wallet}>
-                Mint
+                Coming Soon
               </button>
             </div>
           </div>
