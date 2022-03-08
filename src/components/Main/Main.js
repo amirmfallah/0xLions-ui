@@ -177,7 +177,7 @@ class Main extends React.Component {
     return (
       <div className="main-section container pt-3 pb-3">
         <div className="d-flex flex-row align-items-center mb-3">
-          <img src="/assets/banner.png" alt="logo" height={80}></img>
+          <img src="/assets/banner.png" alt="logo" height={50}></img>
           <div className="flex-1 flex-grow-1"></div>
           <div className="connect-btn mr-2" onClick={this.connectWallet}>
             <img
