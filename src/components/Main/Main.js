@@ -24,9 +24,9 @@ const providerOptions = {
   },
 };
 
-const contractABI = require("../../XDoodlesNFTV3.json");
+const contractABI = require("../../XLionsV1.json");
 const NFT_ABI = contractABI.abi;
-const NFT_CONTRACT_ADDRESS = "";
+const NFT_CONTRACT_ADDRESS = "0x3AE3f7558F19690f75EB8a93938C99F1F1F379D5";
 
 class Main extends React.Component {
   constructor(props) {
@@ -46,14 +46,15 @@ class Main extends React.Component {
     this.loadCount = this.loadCount.bind(this);
     this.loadInstance = this.loadInstance.bind(this);
 
-    //this.loadInstance();
+    this.loadInstance();
   }
   web3Instance;
   contractInstance;
+  web3Connect;
 
   async loadInstance() {
     this.web3Instance = new Web3(
-      "https://rinkeby.infura.io/v3/a6a041ec814f43d8aef380b4cd8a20df"
+      "https://mainnet.infura.io/v3/a6a041ec814f43d8aef380b4cd8a20df"
     );
     this.contractInstance = await new this.web3Instance.eth.Contract(
       NFT_ABI,
@@ -112,8 +113,8 @@ class Main extends React.Component {
       return;
     }
     const provider = await this.web3Modal.connect();
-    this.web3Instance = this.setState({ web3: new Web3(provider) });
-    this.setState({ wallet: (await this.state.web3.eth.getAccounts())[0] });
+    this.web3Connect = new Web3(provider);
+    this.setState({ wallet: (await this.web3Connect.eth.getAccounts())[0] });
     console.log(this.state.wallet);
   }
 
@@ -121,17 +122,18 @@ class Main extends React.Component {
     if (this.state.minting) {
       return;
     }
-    const contract = await new this.state.web3.eth.Contract(
+    const contract = await new this.web3Connect.eth.Contract(
       NFT_ABI,
       NFT_CONTRACT_ADDRESS
     );
     this.setState({ minting: true });
+    console.log("aaaaadff");
 
-    const nonce = await this.state.web3.eth.getTransactionCount(
+    const nonce = await this.web3Connect.eth.getTransactionCount(
       this.state.wallet,
       "latest"
     ); //get latest nonce
-
+    console.log("aaaaa");
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
     if (parseInt(this.state.supply) + parseInt(this.state.count) <= 1000) {
@@ -144,19 +146,19 @@ class Main extends React.Component {
       to: NFT_CONTRACT_ADDRESS,
       nonce: nonce,
       maxPriorityFeePerGas: 2999999987,
-      value: this.state.web3.utils.toWei(
+      value: this.web3Connect.utils.toWei(
         (0.01 * this.state.count * free).toString(),
         "ether"
       ),
     };
-
+    console.log(tx);
     contract.methods
-      .mintItem(this.state.web3.utils.toBN(this.state.count))
+      .mintItem(this.web3Connect.utils.toBN(this.state.count))
       .send(tx)
       .then(async () => {
         await Swal.fire({
           title: "Congratulations!",
-          text: "You just minted a 0xDoodlesNFT V3. Welcome to the family.",
+          text: "You just minted a 0xLions V1. Welcome to the family.",
           icon: "success",
           heightAuto: false,
         });
@@ -226,16 +228,22 @@ class Main extends React.Component {
               >
                 <FontAwesomeIcon icon={faDiscord}></FontAwesomeIcon>
               </a>
-              <div className="round-btn">
+              <a
+                className="round-btn"
+                href="https://opensea.io/collection/0xlions-v1-official"
+              >
                 <img
                   src="/assets/opensea.svg"
                   alt="opensea"
                   height="16px"
                 ></img>
-              </div>
-              <div className="round-btn">
+              </a>
+              <a
+                className="round-btn"
+                href="https://etherscan.io/address/0x3ae3f7558f19690f75eb8a93938c99f1f1f379d5"
+              >
                 <FontAwesomeIcon icon={faEthereum}></FontAwesomeIcon>
-              </div>
+              </a>
               <a
                 className="round-btn no-margin"
                 href="https://medium.com/@0xLions/0x-lions-v1-571242bb8967"
@@ -265,8 +273,12 @@ class Main extends React.Component {
                   <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
                 </div>
               </div>
-              <button className="btn2" disabled={!this.state.wallet}>
-                Coming Soon
+              <button
+                className="btn2"
+                disabled={!this.state.wallet}
+                onClick={this.mint}
+              >
+                Mint Now
               </button>
             </div>
           </div>
