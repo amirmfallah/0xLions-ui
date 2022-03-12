@@ -147,7 +147,7 @@ class Main extends React.Component {
       nonce: nonce,
       maxPriorityFeePerGas: 2999999987,
       value: this.web3Connect.utils.toWei(
-        (0.01 * this.state.count * free).toString(),
+        (0.02 * this.state.count * free).toString(),
         "ether"
       ),
     };
