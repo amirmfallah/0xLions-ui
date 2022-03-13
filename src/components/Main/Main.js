@@ -73,7 +73,7 @@ class Main extends React.Component {
     if (this.state.minting) {
       return;
     }
-    if (this.state.count >= 20) {
+    if (this.state.count >= 4) {
       return;
     }
     this.setState({ count: this.state.count + 1 });
@@ -136,7 +136,7 @@ class Main extends React.Component {
     console.log("aaaaa");
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 1000) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 3300) {
       free = 0;
     }
     console.log(free);
