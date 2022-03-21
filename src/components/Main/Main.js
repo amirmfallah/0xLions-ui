@@ -147,7 +147,7 @@ class Main extends React.Component {
       nonce: nonce,
       maxPriorityFeePerGas: 2999999987,
       value: this.web3Connect.utils.toWei(
-        (0.02 * this.state.count * free).toString(),
+        (0.01 * this.state.count * free).toString(),
         "ether"
       ),
     };
@@ -259,7 +259,7 @@ class Main extends React.Component {
               className="w-100"
             ></img>
             <span className="text-center mt-3">
-              One 0xLions V1 NFT cost 0.02 ETH
+              One 0xLions V1 NFT cost 0.01 ETH
             </span>
             <span className="text-center mt-1">First 1,000 Mints Free</span>
             <h2 className="text-center mt-3">{this.state.supply}/6000</h2>
