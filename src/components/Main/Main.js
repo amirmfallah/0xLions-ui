@@ -136,7 +136,7 @@ class Main extends React.Component {
     console.log("aaaaa");
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 4113) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 5000) {
       free = 0;
     }
     console.log(free);
