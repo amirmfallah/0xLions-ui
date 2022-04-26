@@ -96,11 +96,6 @@ class Main extends React.Component {
 
   async loadCount(web) {
     try {
-      this.contractInstance.methods.balanceOf.call().then((count) => {
-        console.log("here");
-        console.log(count);
-      });
-
       this.contractInstance.methods
         .totalSupply()
         .call()
