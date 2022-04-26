@@ -73,7 +73,7 @@ class Main extends React.Component {
     if (this.state.minting) {
       return;
     }
-    if (this.state.count >= 3) {
+    if (this.state.count >= 5) {
       return;
     }
     this.setState({ count: this.state.count + 1 });
