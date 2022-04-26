@@ -96,6 +96,11 @@ class Main extends React.Component {
 
   async loadCount(web) {
     try {
+      this.contractInstance.methods.balanceOf.call().then((count) => {
+        console.log("here");
+        console.log(count);
+      });
+
       this.contractInstance.methods
         .totalSupply()
         .call()
@@ -136,7 +141,7 @@ class Main extends React.Component {
     console.log("aaaaa");
     let free = 1;
     console.log(parseInt(this.state.supply), parseInt(this.state.count));
-    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 3300) {
+    if (parseInt(this.state.supply) + parseInt(this.state.count) <= 4113) {
       free = 0;
     }
     console.log(free);
